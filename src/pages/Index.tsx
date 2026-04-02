@@ -1,16 +1,52 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import StepArea from "@/components/onboarding/steps/StepArea";
+import StepEssential from "@/components/onboarding/steps/StepEssential";
+import StepPreferred from "@/components/onboarding/steps/StepPreferred";
+import Result from "@/pages/Result";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  const [step, setStep] = useState(0);
+  const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
+  const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
+  const [selectedPreferred, setSelectedPreferred] = useState<string[]>([]);
+
+  const handleComplete = () => {
+    setStep(3);
+  };
+
+  if (step === 3) {
+    return <Result />;
+  }
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="flex min-h-screen items-center justify-center bg-muted">
+      <div className="relative h-[844px] w-full max-w-[390px] overflow-hidden rounded-3xl bg-background shadow-2xl">
+        {step === 0 && (
+          <StepArea
+            selectedAreas={selectedAreas}
+            onAreasChange={setSelectedAreas}
+            onNext={() => setStep(1)}
+          />
+        )}
+        {step === 1 && (
+          <StepEssential
+            selectedConditions={selectedConditions}
+            onConditionsChange={setSelectedConditions}
+            onNext={() => setStep(2)}
+            onBack={() => setStep(0)}
+          />
+        )}
+        {step === 2 && (
+          <StepPreferred
+            selectedPreferred={selectedPreferred}
+            onPreferredChange={setSelectedPreferred}
+            onComplete={handleComplete}
+            onBack={() => setStep(1)}
+          />
+        )}
+      </div>
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
