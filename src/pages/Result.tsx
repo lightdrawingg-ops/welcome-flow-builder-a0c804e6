@@ -1,8 +1,10 @@
+import { ChevronDown, Search } from "lucide-react";
+
 const BEST_CAFES = [
   {
     name: "카페 마치",
     image: "/images/result_best_01.jpg",
-    location: "서울 성동구 성수동",
+    location: "서울 서초구 서초동",
     badges: ["넓은 공간", "콘센트"],
   },
   {
@@ -30,37 +32,71 @@ const Result = () => {
     <div className="flex min-h-screen items-center justify-center bg-muted">
       <div className="relative h-[844px] w-full max-w-[390px] overflow-hidden rounded-3xl bg-background shadow-2xl">
         <div className="h-full overflow-y-auto">
+          {/* GNB */}
+          <div className="flex h-[56px] items-center justify-between bg-background px-[16px] border-b border-[#E1E2E4]">
+            <img
+              src="/images/logo_black.png"
+              alt="Logo"
+              className="h-[24px] object-contain"
+              onError={(e) => { e.currentTarget.style.display = 'none'; }}
+            />
+            <button className="flex h-[32px] w-[32px] items-center justify-center">
+              <img
+                src="/images/button_search.png"
+                alt="Search"
+                className="h-[24px] w-[24px] object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  const parent = e.currentTarget.parentElement;
+                  if (parent) {
+                    const icon = document.createElement('span');
+                    icon.innerHTML = '🔍';
+                    parent.appendChild(icon);
+                  }
+                }}
+              />
+            </button>
+          </div>
+
           {/* Hero Banner */}
           <div className="px-[16px] pt-[16px]">
-            <div className="relative w-full overflow-hidden rounded-[10px]" style={{ height: 200 }}>
+            <div className="relative w-full overflow-hidden rounded-[10px]" style={{ aspectRatio: '1/1' }}>
               <img
                 src="/images/hero_01.jpg"
                 alt="카공과 산책을 함께 즐길 수 있는 곳들"
                 className="absolute inset-0 h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-black/40" />
-              <div className="absolute inset-0 flex flex-col justify-end p-[20px]">
-                <h1 className="text-[20px] font-bold leading-tight text-primary-foreground">
-                  카공과 산책을{"\n"}함께 즐길 수 있는 곳들
+              <div className="absolute inset-0 flex flex-col justify-end p-[16px]">
+                <h1 className="text-[20px] font-bold leading-tight text-primary-foreground whitespace-pre-line">
+                  {"카공과 산책을\n함께 즐길 수 있는 곳들"}
                 </h1>
                 <p className="mt-[6px] text-[13px] text-primary-foreground/80">
-                  선설님의 기 취향리스트 확인
+                  생산성이 더 올라갈지도 몰라요
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Best Recommendation Section */}
-          <div className="mt-[28px]">
-            <div className="flex items-center justify-between px-[20px]">
-              <h2 className="text-[18px] font-bold text-foreground">히설님 베스트 추천 공간</h2>
-              <button className="text-[13px] text-muted-foreground">전체보기</button>
-            </div>
+          {/* Region Dropdown Button */}
+          <div className="mt-[16px] ml-[16px]">
+            <button className="flex items-center gap-[6px] rounded-full border border-[#E1E2E4] px-[14px] py-[8px] text-[13px] font-medium text-foreground">
+              서울시 서초구 외 3
+              <ChevronDown className="h-4 w-4 text-muted-foreground" />
+            </button>
+          </div>
 
-            <div className="mt-[14px] flex gap-[10px] overflow-x-auto px-[20px] pb-[20px] [&::-webkit-scrollbar]:hidden">
+          {/* Best Recommendation Section */}
+          <div className="mt-[24px] px-[16px]">
+            <h2 className="text-[18px] font-bold text-foreground">희설님 베스트 추천 공간</h2>
+            <p className="mt-[4px] text-[13px] text-muted-foreground">
+              선택하신 정보를 바탕으로 가장 추천하는 곳이에요
+            </p>
+
+            <div className="mt-[16px] grid grid-cols-2 gap-[12px]">
               {BEST_CAFES.map((cafe) => (
-                <div key={cafe.name} className="w-[156px] shrink-0">
-                  <div className="relative h-[180px] w-full overflow-hidden rounded-[6px]">
+                <div key={cafe.name}>
+                  <div className="relative w-full overflow-hidden rounded-[6px]" style={{ aspectRatio: '1/1' }}>
                     <img
                       src={cafe.image}
                       alt={cafe.name}
@@ -87,6 +123,11 @@ const Result = () => {
                 </div>
               ))}
             </div>
+
+            {/* More Button */}
+            <button className="mt-[16px] mb-[16px] flex h-[48px] w-full items-center justify-center rounded-[8px] border border-[#E1E2E4] text-[14px] font-medium text-foreground">
+              더 보기 ∨
+            </button>
           </div>
         </div>
       </div>
