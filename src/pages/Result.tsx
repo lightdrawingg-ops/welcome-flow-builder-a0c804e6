@@ -2,28 +2,32 @@ import { ChevronDown, Search } from "lucide-react";
 
 const BEST_CAFES = [
   {
-    name: "카페 마치",
+    name: "카페 타센",
+    category: "카페",
     image: "/images/result_best_01.jpg",
     location: "서울 서초구 서초동",
-    badges: ["넓은 공간", "콘센트"],
+    badges: ["운영자Pick", "콘센트넉넉"],
   },
   {
-    name: "어반플랜트",
+    name: "인포메이션카페",
+    category: "카페",
     image: "/images/result_best_02.jpg",
-    location: "서울 마포구 연남동",
-    badges: ["역세권", "분위기"],
+    location: "서울 서초구 서초동",
+    badges: ["낮은조도"],
   },
   {
-    name: "스터디엔커피",
+    name: "스티머스 팩토리샵",
+    category: "카페",
     image: "/images/result_best_03.jpg",
-    location: "서울 강남구 역삼동",
-    badges: ["콘센트", "좌석"],
+    location: "서울 서초구 서초동",
+    badges: ["커피맛집"],
   },
   {
-    name: "하이브러리",
+    name: "밤부 베이커리&브루잉...",
+    category: "카페",
     image: "/images/result_best_04.jpg",
-    location: "서울 서초구 방배동",
-    badges: ["통창뷰", "역세권"],
+    location: "서울 서초구 서초동",
+    badges: ["통창뷰"],
   },
 ];
 
