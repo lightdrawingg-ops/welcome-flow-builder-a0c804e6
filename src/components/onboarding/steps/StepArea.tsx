@@ -73,7 +73,7 @@ const StepArea = ({ selectedAreas, onAreasChange, onNext }: StepAreaProps) => {
             </button>
           </DrawerTrigger>
 
-          <DrawerContent className="max-h-[65vh] mx-auto max-w-[390px] overflow-hidden flex flex-col" hideHandle>
+          <DrawerContent className="max-h-[65vh] mx-auto max-w-[390px] overflow-hidden flex flex-col">
             <div className="relative flex !h-[52px] !min-h-[52px] items-center justify-center px-[20px] border-b-[1px] border-border">
               <button
                 onClick={() => setDrawerOpen(false)}
