@@ -111,7 +111,10 @@ const Result = () => {
                     </button>
                   </div>
                   <div className="mt-[8px]">
-                    <p className="text-[14px] font-bold text-foreground">{cafe.name}</p>
+                    <p className="text-[14px] text-foreground">
+                      <span className="font-bold">{cafe.name}</span>
+                      {cafe.category && <span className="ml-[4px] text-[12px] font-normal text-muted-foreground">{cafe.category}</span>}
+                    </p>
                     <p className="mt-[2px] text-[12px] text-muted-foreground">{cafe.location}</p>
                     <div className="mt-[6px] flex flex-wrap gap-[4px]">
                       {cafe.badges.map((badge) => (
