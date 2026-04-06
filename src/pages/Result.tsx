@@ -96,14 +96,14 @@ const Result = () => {
               선택하신 정보를 바탕으로 가장 추천하는 곳이에요
             </p>
 
-            <div className="mt-[16px] grid grid-cols-2 gap-[12px]">
+            <div className="mt-[16px] grid grid-cols-2 gap-x-[12px] gap-y-[32px]">
               {BEST_CAFES.map((cafe) => (
                 <div key={cafe.name}>
-                  <div className="relative w-full overflow-hidden rounded-[6px]" style={{ aspectRatio: '1/1' }}>
+                  <div className="relative w-full overflow-hidden rounded-[6px]">
                     <img
                       src={cafe.image}
                       alt={cafe.name}
-                      className="h-full w-full object-cover"
+                      className="h-[232px] w-full object-cover"
                     />
                     <button className="absolute right-[10px] top-[10px] h-[24px] w-[24px]">
                       <img src="/images/button_like.png" alt="좋아요" className="h-full w-full" />
@@ -119,7 +119,8 @@ const Result = () => {
                       {cafe.badges.map((badge) => (
                         <span
                           key={badge}
-                          className="rounded-[4px] bg-secondary px-[6px] py-[2px] text-[11px] font-medium text-muted-foreground"
+                          className="rounded-[4px] px-[6px] py-[2px] text-[11px] font-medium"
+                          style={{ backgroundColor: '#F4F4F5', color: '#70737C' }}
                         >
                           {badge}
                         </span>
