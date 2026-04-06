@@ -132,8 +132,9 @@ const Result = () => {
             </div>
 
             {/* More Button */}
-            <button className="mt-[16px] mb-[16px] flex h-[48px] w-full items-center justify-center rounded-[8px] border border-[#E1E2E4] text-[14px] font-medium text-foreground">
-              더 보기 ∨
+            <button className="mt-[16px] mb-[16px] flex h-[48px] w-full items-center justify-center gap-[6px] rounded-[8px] border border-[#E1E2E4] text-[14px] font-medium text-foreground">
+              더 보기
+              <ChevronDown className="h-4 w-4" strokeWidth={2.5} />
             </button>
           </div>
         </div>
