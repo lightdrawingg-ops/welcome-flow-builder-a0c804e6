@@ -38,13 +38,15 @@ const StepPreferred = ({ selectedPreferred, onPreferredChange, onComplete, onBac
           <h1 className="text-xl font-bold text-foreground">
             선호하는 작업 공간 조건이 있나요?
           </h1>
-        </div>
-        <div className="mt-1 flex items-center gap-2">
-          <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
+          <span className="shrink-0 rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
             선택
           </span>
-          <p className="text-sm text-muted-foreground">중복 선택 가능해요</p>
         </div>
+        <p className="mt-1 text-sm text-muted-foreground">
+          선택하면 추천 결과가 더 정확해져요.
+          <br />
+          선택하지 않아도 모든 공간이 추천 대상에 포함돼요
+        </p>
 
         <div className="mt-5 grid grid-cols-2 gap-[12px] pb-4">
           {PREFERRED_OPTIONS.map((option) => (
