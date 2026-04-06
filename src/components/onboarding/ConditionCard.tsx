@@ -20,7 +20,7 @@ const ConditionCard = ({ icon, title, description, selected, onToggle }: Conditi
           : "border-[#E1E2E4] bg-card"
       )}
     >
-      <span className="text-2xl">{icon}</span>
+      <span style={{ fontSize: "20px", lineHeight: 1 }}>{icon}</span>
       <div className="flex-1">
         <p className="text-sm font-semibold text-foreground">{title}</p>
         <p className="mt-0.5 text-xs text-muted-foreground">{description}</p>
