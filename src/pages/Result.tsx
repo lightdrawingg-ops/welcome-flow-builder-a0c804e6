@@ -70,8 +70,7 @@ const Result = () => {
                 alt="카공과 산책을 함께 즐길 수 있는 곳들"
                 className="absolute inset-0 h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-black/40" />
-              <div className="absolute inset-0 flex flex-col justify-end p-[16px]">
+              <div className="absolute bottom-[32px] left-[24px]">
                 <h1 className="text-[20px] font-bold leading-tight text-primary-foreground whitespace-pre-line">
                   {"카공과 산책을\n함께 즐길 수 있는 곳들"}
                 </h1>
@@ -97,14 +96,14 @@ const Result = () => {
               선택하신 정보를 바탕으로 가장 추천하는 곳이에요
             </p>
 
-            <div className="mt-[16px] grid grid-cols-2 gap-[12px]">
+            <div className="mt-[16px] grid grid-cols-2 gap-x-[12px] gap-y-[32px]">
               {BEST_CAFES.map((cafe) => (
                 <div key={cafe.name}>
-                  <div className="relative w-full overflow-hidden rounded-[6px]" style={{ aspectRatio: '1/1' }}>
+                  <div className="relative w-full overflow-hidden rounded-[6px]">
                     <img
                       src={cafe.image}
                       alt={cafe.name}
-                      className="h-full w-full object-cover"
+                      className="h-[232px] w-full object-cover"
                     />
                     <button className="absolute right-[10px] top-[10px] h-[24px] w-[24px]">
                       <img src="/images/button_like.png" alt="좋아요" className="h-full w-full" />
@@ -120,7 +119,8 @@ const Result = () => {
                       {cafe.badges.map((badge) => (
                         <span
                           key={badge}
-                          className="rounded-[4px] bg-secondary px-[6px] py-[2px] text-[11px] font-medium text-muted-foreground"
+                          className="rounded-[4px] px-[6px] py-[2px] text-[11px] font-medium"
+                          style={{ backgroundColor: '#F4F4F5', color: '#70737C' }}
                         >
                           {badge}
                         </span>
@@ -132,8 +132,9 @@ const Result = () => {
             </div>
 
             {/* More Button */}
-            <button className="mt-[16px] mb-[16px] flex h-[48px] w-full items-center justify-center rounded-[8px] border border-[#E1E2E4] text-[14px] font-medium text-foreground">
-              더 보기 ∨
+            <button className="mt-[16px] mb-[16px] flex h-[48px] w-full items-center justify-center gap-[6px] rounded-[8px] border border-[#E1E2E4] text-[14px] font-medium text-foreground">
+              더 보기
+              <ChevronDown className="h-4 w-4" strokeWidth={2.5} />
             </button>
           </div>
         </div>

@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, RefObject } from "react";
 import { ChevronDown, ChevronRight, Check, RotateCcw, X } from "lucide-react";
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import { Drawer, DrawerContent, DrawerTrigger, DrawerPortal, DrawerOverlay } from "@/components/ui/drawer";
 import { cn } from "@/lib/utils";
 import OnboardingHeader from "../OnboardingHeader";
 import StepIndicator from "../StepIndicator";
@@ -19,9 +19,10 @@ interface StepAreaProps {
   selectedAreas: string[];
   onAreasChange: (areas: string[]) => void;
   onNext: () => void;
+  containerRef?: RefObject<HTMLDivElement>;
 }
 
-const StepArea = ({ selectedAreas, onAreasChange, onNext }: StepAreaProps) => {
+const StepArea = ({ selectedAreas, onAreasChange, onNext, containerRef }: StepAreaProps) => {
   const [activeRegion, setActiveRegion] = useState("서울");
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -73,87 +74,91 @@ const StepArea = ({ selectedAreas, onAreasChange, onNext }: StepAreaProps) => {
             </button>
           </DrawerTrigger>
 
-          <DrawerContent className="max-h-[65vh] mx-auto max-w-[390px] overflow-hidden flex flex-col">
-            <div className="relative flex !h-[52px] !min-h-[52px] items-center justify-center px-[20px] border-b-[1px] border-border">
-              <button
-                onClick={() => setDrawerOpen(false)}
-                className="absolute left-[20px] flex h-[32px] w-[32px] items-center justify-center text-foreground"
-              >
-                <X className="h-[20px] w-[20px]" />
-              </button>
-              <span className="text-[18px] font-bold text-foreground">지역 선택</span>
-            </div>
-
-            <div className="flex min-h-0 flex-1 overflow-hidden">
-              <div className="w-[132px] shrink-0 overflow-y-auto border-r border-border bg-secondary">
-                {Object.keys(REGIONS).map((region) => (
-                  <button
-                    key={region}
-                    onClick={() => setActiveRegion(region)}
-                    className={cn(
-                      "flex w-full items-center gap-[4px] pl-[24px] pr-[16px] text-left text-[16px] h-[54px] transition-colors",
-                      activeRegion === region
-                        ? "bg-background font-bold text-foreground"
-                        : "bg-secondary font-medium text-muted-foreground"
-                    )}
-                  >
-                    {region}
-                    {activeRegion === region && (
-                      <ChevronRight className="h-4 w-4 text-foreground" />
-                    )}
-                  </button>
-                ))}
+          <DrawerPortal container={containerRef?.current}>
+            <DrawerOverlay className="absolute inset-0 z-50 bg-black/80" />
+            <div className="absolute inset-x-0 bottom-0 z-50 max-h-[65vh] mx-auto max-w-[390px] overflow-hidden flex flex-col rounded-t-[10px] border bg-background [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+              <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
+              <div className="relative flex !h-[52px] !min-h-[52px] items-center justify-center px-[20px] border-b-[1px] border-border">
+                <button
+                  onClick={() => setDrawerOpen(false)}
+                  className="absolute left-[20px] flex h-[32px] w-[32px] items-center justify-center text-foreground"
+                >
+                  <X className="h-[20px] w-[20px]" />
+                </button>
+                <span className="text-[18px] font-bold text-foreground">지역 선택</span>
               </div>
 
-              <div className="w-[258px] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                {subAreas.map((area) => {
-                  const fullArea = `${activeRegion} ${area}`;
-                  const isSelected = selectedAreas.includes(fullArea);
-                  return (
+              <div className="flex min-h-0 flex-1 overflow-hidden">
+                <div className="w-[132px] shrink-0 overflow-y-auto border-r border-border bg-secondary [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
+                  {Object.keys(REGIONS).map((region) => (
                     <button
-                      key={area}
-                      onClick={() => toggleSubArea(area)}
-                      className="flex w-full items-center justify-between pl-[20px] pr-[16px] text-left h-[54px]"
+                      key={region}
+                      onClick={() => setActiveRegion(region)}
+                      className={cn(
+                        "flex w-full items-center gap-[4px] pl-[24px] pr-[16px] text-left text-[16px] h-[54px] transition-colors",
+                        activeRegion === region
+                          ? "bg-background font-bold text-foreground"
+                          : "bg-secondary font-medium text-muted-foreground"
+                      )}
                     >
-                      <span
-                        className={cn(
-                          "text-[16px]",
-                          isSelected ? "font-bold text-foreground" : "font-medium text-muted-foreground"
-                        )}
-                      >
-                        {area}
-                      </span>
-                      {isSelected && (
-                        <Check className="h-5 w-5 text-foreground" />
+                      {region}
+                      {activeRegion === region && (
+                        <ChevronRight className="h-4 w-4 text-foreground" />
                       )}
                     </button>
-                  );
-                })}
+                  ))}
+                </div>
+
+                <div className="w-[258px] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                  {subAreas.map((area) => {
+                    const fullArea = `${activeRegion} ${area}`;
+                    const isSelected = selectedAreas.includes(fullArea);
+                    return (
+                      <button
+                        key={area}
+                        onClick={() => toggleSubArea(area)}
+                        className="flex w-full items-center justify-between pl-[20px] pr-[16px] text-left h-[54px]"
+                      >
+                        <span
+                          className={cn(
+                            "text-[16px]",
+                            isSelected ? "font-bold text-foreground" : "font-medium text-muted-foreground"
+                          )}
+                        >
+                          {area}
+                        </span>
+                        {isSelected && (
+                          <Check className="h-5 w-5 text-foreground" />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="flex gap-3 px-5 pb-8 pt-4 border-t border-border">
+                <button
+                  onClick={handleReset}
+                  className="flex items-center gap-1 rounded-xl border border-input px-4 py-3.5 text-sm font-medium text-muted-foreground"
+                >
+                  <RotateCcw className="h-4 w-4" />
+                  초기화
+                </button>
+                <button
+                  onClick={handleDrawerNext}
+                  disabled={selectedAreas.length === 0}
+                  className={cn(
+                    "flex-1 rounded-xl py-3.5 text-sm font-bold transition-colors",
+                    selectedAreas.length > 0
+                      ? "bg-accent text-accent-foreground"
+                      : "bg-onboarding-disabled-bg text-onboarding-disabled-text cursor-not-allowed"
+                  )}
+                >
+                  다음
+                </button>
               </div>
             </div>
-
-            <div className="flex gap-3 px-5 pb-8 pt-4 border-t border-border">
-              <button
-                onClick={handleReset}
-                className="flex items-center gap-1 rounded-xl border border-input px-4 py-3.5 text-sm font-medium text-muted-foreground"
-              >
-                <RotateCcw className="h-4 w-4" />
-                초기화
-              </button>
-              <button
-                onClick={handleDrawerNext}
-                disabled={selectedAreas.length === 0}
-                className={cn(
-                  "flex-1 rounded-xl py-3.5 text-sm font-bold transition-colors",
-                  selectedAreas.length > 0
-                    ? "bg-accent text-accent-foreground"
-                    : "bg-onboarding-disabled-bg text-onboarding-disabled-text cursor-not-allowed"
-                )}
-              >
-                다음
-              </button>
-            </div>
-          </DrawerContent>
+          </DrawerPortal>
         </Drawer>
 
         {selectedAreas.length > 0 && (
