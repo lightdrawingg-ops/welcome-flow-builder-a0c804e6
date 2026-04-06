@@ -35,8 +35,8 @@ const BEST_CAFES = [
 const Result = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="relative h-[844px] w-full max-w-[390px] overflow-hidden rounded-3xl bg-background shadow-2xl">
-        <div className="h-full overflow-y-auto">
+      <div className="relative flex h-[844px] w-full max-w-[390px] flex-col overflow-hidden rounded-3xl bg-background shadow-2xl">
+        <div className="flex-1 overflow-y-auto">
           {/* GNB */}
           <div className="flex h-[56px] items-center justify-between bg-background px-[16px] border-b border-[#E1E2E4]">
             <img
@@ -139,6 +139,8 @@ const Result = () => {
             </button>
           </div>
         </div>
+
+        <BottomTabBar activeTab="홈" />
       </div>
     </div>
   );
