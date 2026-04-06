@@ -3,9 +3,10 @@ import StepArea from "@/components/onboarding/steps/StepArea";
 import StepEssential from "@/components/onboarding/steps/StepEssential";
 import StepPreferred from "@/components/onboarding/steps/StepPreferred";
 import Result from "@/pages/Result";
+import Home from "@/pages/Home";
 
 const Index = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(-1);
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
   const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
   const [selectedPreferred, setSelectedPreferred] = useState<string[]>([]);
@@ -14,6 +15,10 @@ const Index = () => {
   const handleComplete = () => {
     setStep(3);
   };
+
+  if (step === -1) {
+    return <Home onStartOnboarding={() => setStep(0)} />;
+  }
 
   if (step === 3) {
     return <Result />;

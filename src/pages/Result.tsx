@@ -1,4 +1,5 @@
 import { ChevronDown, Search } from "lucide-react";
+import BottomTabBar from "@/components/BottomTabBar";
 
 const BEST_CAFES = [
   {
