@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import StepArea from "@/components/onboarding/steps/StepArea";
 import StepEssential from "@/components/onboarding/steps/StepEssential";
 import StepPreferred from "@/components/onboarding/steps/StepPreferred";
@@ -9,6 +9,7 @@ const Index = () => {
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
   const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
   const [selectedPreferred, setSelectedPreferred] = useState<string[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const handleComplete = () => {
     setStep(3);
@@ -20,12 +21,13 @@ const Index = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="relative h-[844px] w-full max-w-[390px] overflow-hidden rounded-3xl bg-background shadow-2xl">
+      <div ref={containerRef} className="relative h-[844px] w-full max-w-[390px] overflow-hidden rounded-3xl bg-background shadow-2xl">
         {step === 0 && (
           <StepArea
             selectedAreas={selectedAreas}
             onAreasChange={setSelectedAreas}
             onNext={() => setStep(1)}
+            containerRef={containerRef}
           />
         )}
         {step === 1 && (
