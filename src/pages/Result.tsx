@@ -70,8 +70,7 @@ const Result = () => {
                 alt="카공과 산책을 함께 즐길 수 있는 곳들"
                 className="absolute inset-0 h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-black/40" />
-              <div className="absolute inset-0 flex flex-col justify-end p-[16px]">
+              <div className="absolute bottom-[32px] left-[24px]">
                 <h1 className="text-[20px] font-bold leading-tight text-primary-foreground whitespace-pre-line">
                   {"카공과 산책을\n함께 즐길 수 있는 곳들"}
                 </h1>
