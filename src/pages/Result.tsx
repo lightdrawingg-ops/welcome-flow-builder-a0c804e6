@@ -39,7 +39,7 @@ const Result = () => {
 
   useEffect(() => {
     if (bestSectionRef.current && scrollContainerRef.current) {
-      const offset = bestSectionRef.current.offsetTop;
+      const offset = bestSectionRef.current.offsetTop - 56;
       scrollContainerRef.current.scrollTop = offset;
     }
   }, []);
@@ -73,7 +73,7 @@ const Result = () => {
             </button>
         </div>
 
-        <div ref={scrollContainerRef} className="flex-1 overflow-y-auto">
+        <div ref={scrollContainerRef} className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden" style={{ scrollbarWidth: 'none' }}>
           {/* Hero Banner */}
           <div className="px-[16px] pt-[16px]">
             <div className="relative w-full overflow-hidden rounded-[10px]" style={{ aspectRatio: '1/1' }}>
@@ -95,7 +95,7 @@ const Result = () => {
 
           {/* Region Dropdown Button */}
           <div className="mt-[16px] ml-[16px]">
-            <button className="flex items-center gap-[6px] rounded-full border border-[#E1E2E4] px-[14px] py-[8px] text-[13px] font-medium text-foreground">
+            <button className="flex items-center gap-[6px] rounded-[6px] border border-[#E1E2E4] px-[14px] py-[8px] text-[13px] font-medium text-foreground">
               서울시 서초구 외 3
               <ChevronDown className="h-4 w-4 text-muted-foreground" />
             </button>
