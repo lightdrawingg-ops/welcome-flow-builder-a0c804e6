@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { ChevronDown, Search } from "lucide-react";
 import BottomTabBar from "@/components/BottomTabBar";
 
@@ -33,6 +34,16 @@ const BEST_CAFES = [
 ];
 
 const Result = () => {
+  const bestSectionRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (bestSectionRef.current && scrollContainerRef.current) {
+      const offset = bestSectionRef.current.offsetTop;
+      scrollContainerRef.current.scrollTop = offset;
+    }
+  }, []);
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted">
       <div className="relative flex h-[844px] w-full max-w-[390px] flex-col overflow-hidden rounded-3xl bg-background shadow-2xl">
@@ -62,7 +73,7 @@ const Result = () => {
             </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto">
+        <div ref={scrollContainerRef} className="flex-1 overflow-y-auto">
           {/* Hero Banner */}
           <div className="px-[16px] pt-[16px]">
             <div className="relative w-full overflow-hidden rounded-[10px]" style={{ aspectRatio: '1/1' }}>
@@ -91,7 +102,7 @@ const Result = () => {
           </div>
 
           {/* Best Recommendation Section */}
-          <div className="mt-[24px] px-[16px]">
+          <div ref={bestSectionRef} className="mt-[24px] px-[16px]">
             <h2 className="text-[18px] font-bold text-foreground">희설님 베스트 추천 공간</h2>
             <p className="mt-[4px] text-[13px] text-muted-foreground">
               선택하신 정보를 바탕으로 가장 추천하는 곳이에요

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import StepArea from "@/components/onboarding/steps/StepArea";
 import StepEssential from "@/components/onboarding/steps/StepEssential";
 import StepPreferred from "@/components/onboarding/steps/StepPreferred";
@@ -13,14 +13,40 @@ const Index = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleComplete = () => {
-    setStep(3);
+    setStep(3); // loading
   };
+
+  useEffect(() => {
+    if (step === 3) {
+      const timer = setTimeout(() => setStep(4), 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [step]);
 
   if (step === -1) {
     return <Home onStartOnboarding={() => setStep(0)} />;
   }
 
   if (step === 3) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-muted">
+        <div className="relative flex h-[844px] w-full max-w-[390px] items-center justify-center rounded-3xl bg-background shadow-2xl">
+          <div
+            className="animate-spin rounded-full"
+            style={{
+              width: 70,
+              height: 70,
+              border: '5px solid transparent',
+              borderTopColor: '#FFF048',
+              borderRightColor: '#FFF048',
+            }}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  if (step === 4) {
     return <Result />;
   }
 
