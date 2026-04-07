@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { ChevronDown, Search } from "lucide-react";
 import BottomTabBar from "@/components/BottomTabBar";
 
