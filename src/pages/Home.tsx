@@ -22,7 +22,7 @@ const Home = ({ onStartOnboarding }: HomeProps) => {
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden" style={{ scrollbarWidth: 'none' }}>
           {/* Hero Banner */}
           <div className="px-[16px] pt-[16px]">
             <div className="relative w-full overflow-hidden rounded-[10px]" style={{ aspectRatio: '1/1' }}>
