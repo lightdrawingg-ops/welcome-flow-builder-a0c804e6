@@ -128,7 +128,7 @@ const StepArea = ({ selectedAreas, onAreasChange, onNext, containerRef }: StepAr
                           {area}
                         </span>
                         {isSelected && (
-                          <Check className="h-5 w-5 text-foreground" />
+                          <Check className="h-6 w-6" style={{ color: "#1A75FF" }} />
                         )}
                       </button>
                     );

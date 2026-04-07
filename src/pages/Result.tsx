@@ -36,9 +36,8 @@ const Result = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted">
       <div className="relative flex h-[844px] w-full max-w-[390px] flex-col overflow-hidden rounded-3xl bg-background shadow-2xl">
-        <div className="flex-1 overflow-y-auto">
-          {/* GNB */}
-          <div className="flex h-[56px] items-center justify-between bg-background px-[16px] border-b border-[#E1E2E4]">
+        {/* GNB - Fixed */}
+        <div className="sticky top-0 left-0 right-0 z-50 flex h-[56px] items-center justify-between bg-background px-[16px] border-b border-[#E1E2E4]">
             <img
               src="/images/logo_black.png"
               alt="Logo"
@@ -61,8 +60,9 @@ const Result = () => {
                 }}
               />
             </button>
-          </div>
+        </div>
 
+        <div className="flex-1 overflow-y-auto">
           {/* Hero Banner */}
           <div className="px-[16px] pt-[16px]">
             <div className="relative w-full overflow-hidden rounded-[10px]" style={{ aspectRatio: '1/1' }}>

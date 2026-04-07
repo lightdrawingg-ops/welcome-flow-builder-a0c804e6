@@ -14,15 +14,15 @@ const Home = ({ onStartOnboarding }: HomeProps) => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted">
       <div className="relative flex h-[844px] w-full max-w-[390px] flex-col overflow-hidden rounded-3xl bg-background shadow-2xl">
-        <div className="flex-1 overflow-y-auto">
-          {/* GNB */}
-          <div className="flex h-[56px] items-center justify-between bg-background px-[16px] border-b border-[#E1E2E4]">
-            <img src="/images/logo_black.png" alt="Logo" className="h-[24px] object-contain" />
-            <button className="flex h-[32px] w-[32px] items-center justify-center">
-              <img src="/images/button_search.png" alt="Search" className="h-[24px] w-[24px] object-contain" />
-            </button>
-          </div>
+        {/* GNB - Fixed */}
+        <div className="sticky top-0 left-0 right-0 z-50 flex h-[56px] items-center justify-between bg-background px-[16px] border-b border-[#E1E2E4]">
+          <img src="/images/logo_black.png" alt="Logo" className="h-[24px] object-contain" />
+          <button className="flex h-[32px] w-[32px] items-center justify-center">
+            <img src="/images/button_search.png" alt="Search" className="h-[24px] w-[24px] object-contain" />
+          </button>
+        </div>
 
+        <div className="flex-1 overflow-y-auto">
           {/* Hero Banner */}
           <div className="px-[16px] pt-[16px]">
             <div className="relative w-full overflow-hidden rounded-[10px]" style={{ aspectRatio: '1/1' }}>
@@ -71,7 +71,7 @@ const Home = ({ onStartOnboarding }: HomeProps) => {
 
             <button
               onClick={onStartOnboarding}
-              className="mt-[16px] w-full rounded-xl py-4 text-[15px] font-bold"
+              className="mt-[16px] mb-[80px] w-full rounded-xl py-4 text-[15px] font-bold"
               style={{ backgroundColor: "#FFF048", color: "#171717" }}
             >
               맞춤 공간 추천 받기 →

@@ -18,8 +18,8 @@ interface BottomTabBarProps {
 const BottomTabBar = ({ activeTab = "홈" }: BottomTabBarProps) => {
   return (
     <div
-      className="flex h-[46px] items-center justify-around bg-background"
-      style={{ borderTop: "1px solid #E1E2E4" }}
+      className="flex items-center justify-around bg-background py-[4px]"
+      style={{ borderTop: "1px solid #E1E2E4", height: "54px" }}
     >
       {TABS.map((tab) => {
         const isActive = tab.label === activeTab;
