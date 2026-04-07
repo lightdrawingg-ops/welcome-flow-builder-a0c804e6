@@ -39,7 +39,7 @@ const Result = () => {
 
   useEffect(() => {
     if (bestSectionRef.current && scrollContainerRef.current) {
-      const offset = bestSectionRef.current.offsetTop;
+      const offset = bestSectionRef.current.offsetTop - 56;
       scrollContainerRef.current.scrollTop = offset;
     }
   }, []);
