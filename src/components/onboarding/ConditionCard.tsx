@@ -26,9 +26,9 @@ const ConditionCard = ({ icon, title, description, selected, onToggle }: Conditi
         <p className="mt-0.5 text-xs text-muted-foreground">{description}</p>
       </div>
       {selected && (
-        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary">
-          <Check className="h-4 w-4 text-primary-foreground" />
-        </div>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="shrink-0">
+          <path d="M5 13l4 4L19 7" stroke="#1A75FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       )}
     </button>
   );
