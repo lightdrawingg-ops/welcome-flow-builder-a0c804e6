@@ -71,7 +71,7 @@ const Home = ({ onStartOnboarding }: HomeProps) => {
 
             <button
               onClick={onStartOnboarding}
-              className="mt-[16px] w-full rounded-xl py-4 text-[15px] font-bold"
+              className="mt-[16px] mb-[80px] w-full rounded-xl py-4 text-[15px] font-bold"
               style={{ backgroundColor: "#FFF048", color: "#171717" }}
             >
               맞춤 공간 추천 받기 →
