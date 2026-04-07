@@ -1,7 +1,7 @@
 import BottomTabBar from "@/components/BottomTabBar";
 
 const CONDITIONS = [
-  { icon: "🛏", title: "넓은 공간", description: "2층 이상, 혹은 약 20인 이상 수용 가능" },
+  { icon: "📐", title: "넓은 공간", description: "2층 이상, 혹은 약 20인 이상 수용 가능" },
   { icon: "⚡", title: "콘센트 유무", description: "사용 가능한 콘센트 두 곳 이상" },
   { icon: "🪑", title: "편한 의자와 테이블", description: "등받이 의자 + 노트북 작업 가능한 테이블 다수" },
 ];
