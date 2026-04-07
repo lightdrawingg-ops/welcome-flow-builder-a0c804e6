@@ -13,7 +13,7 @@ const ConditionCard = ({ icon, title, description, selected, onToggle }: Conditi
     <button
       onClick={onToggle}
       className={cn(
-        "flex w-full items-center gap-3 rounded-xl border px-4 py-4 text-left transition-colors",
+        "flex h-[66px] w-full items-center gap-3 rounded-xl border px-4 text-left transition-colors",
         selected
           ? "border-onboarding-card-active-border bg-card"
           : "border-[#E1E2E4] bg-card"
