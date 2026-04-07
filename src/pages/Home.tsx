@@ -52,7 +52,7 @@ const Home = ({ onStartOnboarding }: HomeProps) => {
                 {CONDITIONS.map((c) => (
                   <div
                     key={c.title}
-                    className="flex w-full items-center gap-3 rounded-xl border border-[#E1E2E4] bg-card px-4 py-4 text-left"
+                    className="flex h-[66px] w-full items-center gap-3 rounded-xl border border-[#E1E2E4] bg-card px-4 text-left"
                   >
                     <span style={{ fontSize: "20px", lineHeight: 1 }}>{c.icon}</span>
                     <div className="flex-1">
