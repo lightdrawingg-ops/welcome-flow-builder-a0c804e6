@@ -102,7 +102,7 @@ const Result = () => {
           </div>
 
           {/* Best Recommendation Section */}
-          <div className="mt-[24px] px-[16px]">
+          <div ref={bestSectionRef} className="mt-[24px] px-[16px]">
             <h2 className="text-[18px] font-bold text-foreground">희설님 베스트 추천 공간</h2>
             <p className="mt-[4px] text-[13px] text-muted-foreground">
               선택하신 정보를 바탕으로 가장 추천하는 곳이에요
