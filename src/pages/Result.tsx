@@ -34,6 +34,16 @@ const BEST_CAFES = [
 ];
 
 const Result = () => {
+  const bestSectionRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (bestSectionRef.current && scrollContainerRef.current) {
+      const offset = bestSectionRef.current.offsetTop;
+      scrollContainerRef.current.scrollTop = offset;
+    }
+  }, []);
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted">
       <div className="relative flex h-[844px] w-full max-w-[390px] flex-col overflow-hidden rounded-3xl bg-background shadow-2xl">
